@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { supabase } from "../supabaseClient";
+import Spinner from "../components/Spinner";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function handleLogin(e) {
     e.preventDefault();
+    setLoading(true);
 
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: window.location.origin + "/dashboard"
+        emailRedirectTo: window.location.origin + "/"
       }
     });
 
+    setLoading(false);
     if (!error) {
       setSent(true);
     } else {
@@ -26,7 +30,7 @@ export default function Login() {
     return (
       <div className="login-container">
         <h2>Magic Link Sent</h2>
-        <p>Check your email to log in.</p>
+        <p>Check your email for the login link. Clicking it may open a new tab; you can close it after logging in.</p>
       </div>
     );
 
@@ -42,7 +46,9 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button type="submit">Send Magic Link</button>
+        <button type="submit" disabled={loading}>
+          {loading ? <Spinner size={20} /> : "Send Magic Link"}
+        </button>
       </form>
     </div>
   );

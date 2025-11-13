@@ -134,7 +134,11 @@ export default function Profile() {
     }
   }
 
-  if (loading) return <div style={{padding:20, textAlign:'center'}}><Spinner /></div>;
+  if (loading) return (
+    <div className="spinner-container">
+      <Spinner />
+    </div>
+  );
 
   return (
     <div className="profile-page">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -7,13 +7,34 @@ import Profile from "./pages/Profile";
 import RequireAuth from "./components/RequireAuth";
 import SearchSchemes from "./pages/SearchSchemes";
 import Footer from "./components/Footer";
+import { supabase } from "./supabaseClient";
 
 export default function App() {
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session?.user) {
+        // Create profile entry if it doesn't exist
+        const { error } = await supabase
+          .from('profiles')
+          .upsert({ id: session.user.id }, { onConflict: 'id' });
+        if (error) {
+          console.error('Error creating profile:', error);
+        }
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   return (
     <div className="app-container">
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          } />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={
             <RequireAuth><Dashboard /></RequireAuth>

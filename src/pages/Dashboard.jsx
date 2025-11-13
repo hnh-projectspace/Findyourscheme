@@ -56,7 +56,11 @@ export default function Dashboard() {
     window.location.href = "/login";
   }
 
-  if (loading) return <div style={{padding:20, textAlign:'center'}}><Spinner /></div>;
+  if (loading) return (
+    <div className="spinner-container">
+      <Spinner />
+    </div>
+  );
 
   return (
     <div className="dashboard">

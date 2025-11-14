@@ -1156,6 +1156,70 @@ button:hover {
   color: #497566;
 }
 
+/* FEEDBACK FORM */
+.feedback-form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.feedback-form h4 {
+  color: #54947F;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.feedback-form input {
+  width: 100%;
+  margin: 10px 0 20px 0;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #f8f9fa;
+}
+
+.feedback-form input:focus {
+  outline: none;
+  border-color: #24E3A3;
+  box-shadow: 0 0 0 3px rgba(36, 227, 163, 0.1);
+  background: white;
+}
+
+.feedback-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.feedback-form input[type="number"]::-webkit-outer-spin-button,
+.feedback-form input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.feedback-form button {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #54947F, #24E3A3);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feedback-form button:hover {
+  background: linear-gradient(135deg, #24E3A3, #54947F);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(84, 148, 127, 0.3);
+}
+
 /* FOOTER */
 .footer {
   background: #f8f9fa;

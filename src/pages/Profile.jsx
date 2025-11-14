@@ -1,6 +1,6 @@
 // src/pages/Profile.jsx
 import React, { useEffect, useState, useCallback } from "react";
-import { supabase } from "../supabaseClient";
+import supabase from "../supabaseClient";
 import Spinner from "../components/Spinner";
 import Nav from "../components/Nav";
 
@@ -188,29 +188,70 @@ export default function Profile() {
           min="0"
         />
 
-        <input
-          name="occupation"
-          type="text"
-          placeholder="Occupation (Student, Farmer, etc.)"
-          value={profile.occupation}
-          onChange={handleChange}
-        />
+        <select name="occupation" value={profile.occupation} onChange={handleChange}>
+          <option value="">Select Occupation</option>
+          <option value="Student">Student</option>
+          <option value="Farmer">Farmer</option>
+          <option value="Self Employed">Self Employed</option>
+          <option value="Unemployed">Unemployed</option>
+          <option value="Private Job">Private Job</option>
+          <option value="Government Job">Government Job</option>
+          <option value="Labor / Daily Wage Worker">Labor / Daily Wage Worker</option>
+          <option value="Business Owner">Business Owner</option>
+          <option value="Retired">Retired</option>
+          <option value="Homemaker">Homemaker</option>
+          <option value="Other">Other</option>
+        </select>
 
-        <input
-          name="category"
-          type="text"
-          placeholder="Category (OBC/SC/ST/General)"
-          value={profile.category}
-          onChange={handleChange}
-        />
+        <select name="category" value={profile.category} onChange={handleChange}>
+          <option value="">Select Category</option>
+          <option value="General">General</option>
+          <option value="OBC">OBC</option>
+          <option value="SC">SC</option>
+          <option value="ST">ST</option>
+          <option value="EWS">EWS</option>
+          <option value="Other">Other</option>
+        </select>
 
-        <input
-          name="state"
-          type="text"
-          placeholder="State (e.g., Tamil Nadu)"
-          value={profile.state}
-          onChange={handleChange}
-        />
+        <select name="state" value={profile.state} onChange={handleChange}>
+          <option value="">Select State</option>
+          <option value="Andhra Pradesh">Andhra Pradesh</option>
+          <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+          <option value="Assam">Assam</option>
+          <option value="Bihar">Bihar</option>
+          <option value="Chhattisgarh">Chhattisgarh</option>
+          <option value="Goa">Goa</option>
+          <option value="Gujarat">Gujarat</option>
+          <option value="Haryana">Haryana</option>
+          <option value="Himachal Pradesh">Himachal Pradesh</option>
+          <option value="Jharkhand">Jharkhand</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Kerala">Kerala</option>
+          <option value="Madhya Pradesh">Madhya Pradesh</option>
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Manipur">Manipur</option>
+          <option value="Meghalaya">Meghalaya</option>
+          <option value="Mizoram">Mizoram</option>
+          <option value="Nagaland">Nagaland</option>
+          <option value="Odisha">Odisha</option>
+          <option value="Punjab">Punjab</option>
+          <option value="Rajasthan">Rajasthan</option>
+          <option value="Sikkim">Sikkim</option>
+          <option value="Tamil Nadu">Tamil Nadu</option>
+          <option value="Telangana">Telangana</option>
+          <option value="Tripura">Tripura</option>
+          <option value="Uttar Pradesh">Uttar Pradesh</option>
+          <option value="Uttarakhand">Uttarakhand</option>
+          <option value="West Bengal">West Bengal</option>
+          <option value="Andaman & Nicobar Islands">Andaman & Nicobar Islands</option>
+          <option value="Chandigarh">Chandigarh</option>
+          <option value="Dadra & Nagar Haveli and Daman & Diu">Dadra & Nagar Haveli and Daman & Diu</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+          <option value="Ladakh">Ladakh</option>
+          <option value="Lakshadweep">Lakshadweep</option>
+          <option value="Puducherry">Puducherry</option>
+        </select>
 
         <div style={{ display: "flex", gap: 10, alignItems: "center", marginTop: 10 }}>
           <button type="submit" disabled={saving}>

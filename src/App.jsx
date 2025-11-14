@@ -7,7 +7,7 @@ import Profile from "./pages/Profile";
 import RequireAuth from "./components/RequireAuth";
 import SearchSchemes from "./pages/SearchSchemes";
 import Footer from "./components/Footer";
-import { supabase } from "./supabaseClient";
+import supabase from "./supabaseClient";
 
 export default function App() {
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { supabase } from '../supabaseClient'
+import supabase from '../supabaseClient'
 
 const FeedbackForm = ({ userId, schemeId }) => {
   const [feedback, setFeedback] = useState({ rating: '', comment: '' })

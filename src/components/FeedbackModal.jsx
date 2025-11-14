@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { supabase } from "../supabaseClient";
+import supabase from "../supabaseClient";
 
 export default function FeedbackModal({ scheme, user, onClose }) {
   const [rating, setRating] = useState(5);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { supabase } from '../supabaseClient'
+import supabase from '../supabaseClient'
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false)

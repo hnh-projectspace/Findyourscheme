@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
+import supabase from "../supabaseClient";
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import Nav from "../components/Nav";
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
-  const [profile, setProfile] = useState(null);
   const [completion, setCompletion] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -25,8 +24,6 @@ export default function Dashboard() {
         .select("*")
         .eq("id", session.user.id)
         .single();
-
-      setProfile(profileData);
 
       // calculate completion
       if (profileData) {
@@ -50,11 +47,6 @@ export default function Dashboard() {
 
     load();
   }, []);
-
-  async function logout() {
-    await supabase.auth.signOut();
-    window.location.href = "/login";
-  }
 
   if (loading) return (
     <div className="spinner-container">

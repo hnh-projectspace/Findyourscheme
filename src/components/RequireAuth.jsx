@@ -1,7 +1,7 @@
 // src/components/RequireAuth.jsx
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-import { supabase } from '../supabaseClient'
+import supabase from '../supabaseClient'
 
 export default function RequireAuth({ children }) {
   const [checking, setChecking] = React.useState(true)

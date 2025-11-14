@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
+import supabase from "../supabaseClient";
 import { Link } from "react-router-dom";
 import FeedbackModal from "../components/FeedbackModal";
 import Nav from "../components/Nav";

@@ -909,13 +909,19 @@ button:hover {
     padding: 12px;
   }
 
-  .footer {
-    padding: 15px;
-  }
+.footer {
+  background: linear-gradient(135deg, #54947F, #24E3A3);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
 
-  .footer-content p {
-    font-size: 0.85rem;
-  }
+.footer-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
 }
 
 .profile-progress { margin: 12px 0; }

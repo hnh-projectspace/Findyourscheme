@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
+import SiteReviewSection from "../components/SiteReviewSection";
+import { useAuth } from "../context/AuthContext";
 
 export default function Home() {
   const aboutRef = useRef(null);
+  const { session } = useAuth();
 
   return (
     <div className="home">
@@ -89,6 +92,11 @@ export default function Home() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* SITE REVIEW SECTION */}
+      <section className="site-review">
+        <SiteReviewSection user={session?.user} />
       </section>
 
     </div>

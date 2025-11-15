@@ -1275,3 +1275,107 @@ button:hover {
   border-radius: 10px;
   cursor: pointer;
 }
+
+.footer {
+  background: linear-gradient(135deg, #54947F, #24E3A3);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.footer-content p {
+  color: white;
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.review-section {
+  margin-top: 40px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.review-section h2 {
+  color: #54947F;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-form select,
+.review-form textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  background: #f8f9fa;
+  font-size: 16px;
+}
+
+.review-form select:focus,
+.review-form textarea:focus {
+  border-color: #24E3A3;
+  box-shadow: 0 0 0 3px rgba(36, 227, 163, 0.15);
+  background: white;
+}
+
+.review-form button {
+  padding: 14px;
+  background: linear-gradient(135deg, #54947F, #24E3A3);
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.review-form button:hover {
+  background: linear-gradient(135deg, #24E3A3, #54947F);
+}
+
+.review-title {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: #54947F;
+  font-size: 1.4rem;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  border-left: 4px solid #24E3A3;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.review-comment {
+  color: #497566;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 5px;
+}

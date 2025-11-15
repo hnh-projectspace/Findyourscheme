@@ -1,24 +1,17 @@
-// src/components/RequireAuth.jsx
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import supabase from '../supabaseClient'
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function RequireAuth({ children }) {
-  const [checking, setChecking] = React.useState(true)
-  const [session, setSession] = React.useState(null)
+  const { session, loading } = useAuth();
 
-  React.useEffect(() => {
-    let mounted = true
-    ;(async () => {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!mounted) return
-      setSession(session)
-      setChecking(false)
-    })()
-    return () => { mounted = false }
-  }, [])
+  if (loading) {
+    return <div style={{ padding: 20 }}>Checking session…</div>;
+  }
 
-  if (checking) return <div style={{padding:20}}>Checking session…</div>
-  if (!session) return <Navigate to="/login" replace />
-  return children
+  if (!session) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
 }

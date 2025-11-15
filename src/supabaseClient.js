@@ -5,10 +5,11 @@ const supabase = createClient(
   process.env.REACT_APP_SUPABASE_ANON_KEY,
   {
     auth: {
-      autoRefreshToken: true,
       persistSession: true,
+      autoRefreshToken: true,
       detectSessionInUrl: true,
-      storageKey: "sb-session", // prevents multiple cookie names
+      storage: localStorage,         // 🔥 Force stable storage
+      storageKey: "fms-auth",        // 🔥 Unique storage key (avoid conflict)
     }
   }
 );

@@ -11,14 +11,14 @@ export default function FeedbackModal({ scheme, user, onClose }) {
     e.preventDefault();
     setSending(true);
 
-    const payload = {
-      user_id: user.id,
-      scheme_id: scheme.id,
-      rating,
-      comment,
-    };
-
-    const { error } = await supabase.from("feedback").insert([payload]);
+    const { error } = await supabase.from("feedback").insert([
+      {
+        user_id: user.id,
+        scheme_id: scheme.id,
+        rating,
+        comment,
+      },
+    ]);
 
     setSending(false);
 
@@ -26,23 +26,30 @@ export default function FeedbackModal({ scheme, user, onClose }) {
     else alert("Error submitting feedback: " + error.message);
   }
 
-  if (done)
+  if (done) {
     return (
-      <div className="modal-bg">
-        <div className="modal-box">
-          <h3>Thank you!</h3>
-          <button onClick={onClose}>Close</button>
+      <div className="f-modal-bg">
+        <div className="f-modal">
+          <h2 className="f-thanks">Thank you for your feedback! 🎉</h2>
+          <button className="f-close-btn" onClick={onClose}>
+            Close
+          </button>
         </div>
       </div>
     );
+  }
 
   return (
-    <div className="modal-bg">
-      <div className="modal-box">
-        <h2>Feedback for {scheme.name}</h2>
+    <div className="f-modal-bg">
+      <div className="f-modal">
+        <button className="f-x-btn" onClick={onClose}>×</button>
 
-        <form onSubmit={submitFeedback}>
-          <label>Rating (1-5)</label>
+        <h2 className="f-title">
+          Feedback for <span>{scheme.name}</span>
+        </h2>
+
+        <form onSubmit={submitFeedback} className="f-form">
+          <label>Rating (1–5)</label>
           <input
             type="number"
             min="1"
@@ -57,16 +64,13 @@ export default function FeedbackModal({ scheme, user, onClose }) {
             rows="3"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
+            placeholder="Write your thoughts..."
           />
 
-          <button type="submit" disabled={sending}>
+          <button type="submit" className="f-submit" disabled={sending}>
             {sending ? "Submitting..." : "Submit Feedback"}
           </button>
         </form>
-
-        <button className="close-btn" onClick={onClose}>
-          Cancel
-        </button>
       </div>
     </div>
   );
